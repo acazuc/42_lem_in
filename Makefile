@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/02/08 13:31:43 by acazuc           ###   ########.fr        #
+#    Updated: 2016/02/08 15:13:20 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,10 @@ SRCS_PATH = srcs/
 SRCS_NAME = main.c \
 			parse.c \
 			get_next_line.c \
+			parse_link.c \
 			error_quit.c \
+			room_create.c \
+			parse_room.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

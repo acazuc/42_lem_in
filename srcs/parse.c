@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:09:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 13:51:48 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/08 15:07:46 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int		check_room(t_env *env, t_parser *p)
 {
 	char	**splitted;
 
-	if (!(splitted = ft_strsplit(line, ' ')))
+	if (!(splitted = ft_strsplit(p->line, ' ')))
 		error_quit("Failed to malloc split");
 	if (splitted[0] && splitted[1] && splitted[2] && !splitted[3])
 		return (parse_room(env, p, splitted));
@@ -29,7 +29,7 @@ static int		check_link(t_env *env, t_parser *p)
 {
 	char	**splitted;
 
-	if (!(splitter = ft_strsplit(line, '-')))
+	if (!(splitted = ft_strsplit(p->line, '-')))
 		error_quit("Failed to malloc split");
 	if (splitted[0] && splitted[1] && !splitted[2])
 		return (parse_link(env, p, splitted));
@@ -40,9 +40,9 @@ static int		check_link(t_env *env, t_parser *p)
 
 static int		parse_line(t_env *env, t_parser *p)
 {
-	if (p->line[0] = '\0')
+	if (p->line[0] == '\0')
 		return (1);
-	if (p->line[0] == '#' && p-.line[1] == '#')
+	if (p->line[0] == '#' && p->line[1] == '#')
 	{
 		if (!ft_strcmp(p->line, "##start"))
 		{
@@ -59,22 +59,23 @@ static int		parse_line(t_env *env, t_parser *p)
 	}
 	else
 	{
-		if (!check_room(env, parser))
+		if (!check_room(env, p))
 			return (0);
 		else if (!check_link(env, p))
 			return (0);
 	}
+	return (1);
 }
 
 void	parse(t_env *env)
 {
-	char	*line;
-	int		rd;
+	t_parser	p;
+	int			rd;
 
-	while ((rd = get_next_line(0, &line)) == 1)
+	while ((rd = get_next_line(0, &(p.line))) == 1)
 	{
-		if (line[0] != '#' && line[1] && line[1] != '#')
-			if (!parse_line(env, line))
+		if (p.line[0] != '#' && p.line[1] && p.line[1] != '#')
+			if (!parse_line(env, &p))
 				return ;
 	}
 	if (rd == -1)

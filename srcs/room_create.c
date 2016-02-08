@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_quit.c                                       :+:      :+:    :+:   */
+/*   room_create.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/29 19:32:12 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 15:09:23 by acazuc           ###   ########.fr       */
+/*   Created: 2016/02/08 15:11:12 by acazuc            #+#    #+#             */
+/*   Updated: 2016/02/08 15:13:05 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	error_quit(char *error_message)
+t_room	*room_create(void)
 {
-	ft_putstr_fd("\033[91mAn error happened: ", 2);
-	ft_putendl_fd(error_message, 2);
-	ft_putstr_fd("\033[0m", 2);
-	exit(-1);
+	t_room	*room;
+
+	if (!(room = malloc(sizeof(*room))))
+		error_quit("Failed to malloc room");
+	room->name = NULL;
+	room->links = NULL;
+	room->next = NULL;
+	return (room);
 }
