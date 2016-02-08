@@ -1,0 +1,4 @@
+libft
+objs/*.o
+*.swp
+lem-in
