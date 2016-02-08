@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:09:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 18:39:44 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/08 18:53:27 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		check_room(t_env *env, t_parser *p)
 		return (parse_room(env, p, splitted));
 	else if (splitted[0] && splitted[1])
 		return (0);
-	return (1);
+	return (-1);
 }
 
 static int		check_link(t_env *env, t_parser *p)
@@ -35,34 +35,47 @@ static int		check_link(t_env *env, t_parser *p)
 		return (parse_link(env, p, splitted));
 	else if (splitted[0] && splitted[1])
 		return (0);
+	return (-1);
+}
+
+static int		check_start_end(t_env *env, t_parser *p)
+{
+	if (!ft_strcmp(p->line, "##start"))
+	{
+		if (p->is_start || p->is_end || env->start)
+			return (0);
+		p->is_start = 1;
+	}
+	else if (!ft_strcmp(p->line, "##end"))
+	{
+		if (p->is_start || p->is_end || env->end)
+			return (0);
+		p->is_end = 1;
+	}
 	return (1);
 }
 
 static int		parse_line(t_env *env, t_parser *p)
 {
+	int		c_r;
+	int		c_l;
+
 	if (p->line[0] == '\0')
-	ft_putendl(p->line);
+		return (0);
 	if (p->line[0] == '#' && p->line[1] == '#')
 	{
-		if (!ft_strcmp(p->line, "##start"))
-		{
-			if (p->is_start || p->is_end)
-				return (0);
-			p->is_start = 1;
-		}
-		else if (!ft_strcmp(p->line, "##end"))
-		{
-			if (p->is_start || p->is_end)
-				return (0);
-			p->is_end = 1;
-		}
+		if (!check_start_end(env, p))
+			return (0);
 	}
 	else
 	{
-		if (!check_room(env, p))
+		if (!(c_r = check_room(env, p)))
 			return (0);
-		else if (!check_link(env, p))
+		else if (!(c_l = check_link(env, p)))
 			return (0);
+		if (c_r == -1 && c_l == -1)
+			return (0);
+		
 	}
 	return (1);
 }
