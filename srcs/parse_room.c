@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:50:08 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 15:10:37 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/08 18:26:46 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_nbr(char *str)
 {
-	size_t	i;
+	size_t		i;
 
 	i = 0;
 	while (str[i])
@@ -47,21 +47,25 @@ static int	check_start_end(t_env *env, t_room *room, t_parser *p)
 
 int		parse_room(t_env *env, t_parser *p, char **split)
 {
-	t_room	*room;
+	t_room_list	*lst;
+	t_room		*room;
 
 	if (!is_nbr(split[1]) || !is_nbr(split[2]))
 		return (0);
-	room = env->rooms;
-	while (room)
+	lst = env->rooms;
+	while (lst)
 	{
-		if (!ft_strcmp(room->name, split[0]))
+		if (!ft_strcmp(lst->room->name, split[0]))
 			return (0);
-		room = room->next;
+		lst = lst->next;
 	}
+	if (!(lst = malloc(sizeof(*lst))))
+		error_quit("Failed to malloc room list");
 	room = room_create();
 	room->name = split[0];
-	room->next = env->rooms;
-	env->rooms = room;
+	lst->room = room;
+	lst->next = env->rooms;
+	env->rooms = lst;
 	if (!check_start_end(env, room, p))
 		return (0);
 	return (1);

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.h                                           :+:      :+:    :+:   */
+/*   room_list.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/08 13:14:02 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 18:21:50 by acazuc           ###   ########.fr       */
+/*   Created: 2016/02/08 18:18:47 by acazuc            #+#    #+#             */
+/*   Updated: 2016/02/08 18:19:36 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEM_IN_H
-# define LEM_IN_H
+#ifndef ROOM_LIST_H
+# define ROOM_LIST_H
 
-# include "../libft/includes/libft.h"
-# include "get_next_line.h"
-# include "prototypes.h"
-# include "includes.h"
-# include "env.h"
-# include "room.h"
-# include "room_list.h"
+struct s_room;
+
+typedef struct			s_room_list
+{
+	struct s_room		*room;
+	struct s_room_list	*next;
+}						t_room_list;
 
 #endif

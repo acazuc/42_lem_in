@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:09:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 15:07:46 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/08 18:39:44 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int		check_room(t_env *env, t_parser *p)
 		error_quit("Failed to malloc split");
 	if (splitted[0] && splitted[1] && splitted[2] && !splitted[3])
 		return (parse_room(env, p, splitted));
-	else if (splitted[0])
+	else if (splitted[0] && splitted[1])
 		return (0);
 	return (1);
 }
@@ -33,7 +33,7 @@ static int		check_link(t_env *env, t_parser *p)
 		error_quit("Failed to malloc split");
 	if (splitted[0] && splitted[1] && !splitted[2])
 		return (parse_link(env, p, splitted));
-	else if (splitted[0])
+	else if (splitted[0] && splitted[1])
 		return (0);
 	return (1);
 }
@@ -41,7 +41,7 @@ static int		check_link(t_env *env, t_parser *p)
 static int		parse_line(t_env *env, t_parser *p)
 {
 	if (p->line[0] == '\0')
-		return (1);
+	ft_putendl(p->line);
 	if (p->line[0] == '#' && p->line[1] == '#')
 	{
 		if (!ft_strcmp(p->line, "##start"))
@@ -72,9 +72,11 @@ void	parse(t_env *env)
 	t_parser	p;
 	int			rd;
 
+	p.is_start = 0;
+	p.is_end = 0;
 	while ((rd = get_next_line(0, &(p.line))) == 1)
 	{
-		if (p.line[0] != '#' && p.line[1] && p.line[1] != '#')
+		if (p.line[0] != '#' || (p.line[1] && p.line[1] == '#'))
 			if (!parse_line(env, &p))
 				return ;
 	}

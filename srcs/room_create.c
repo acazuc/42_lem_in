@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 15:11:12 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 15:13:05 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/08 18:24:46 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ t_room	*room_create(void)
 		error_quit("Failed to malloc room");
 	room->name = NULL;
 	room->links = NULL;
-	room->next = NULL;
 	return (room);
 }

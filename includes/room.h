@@ -6,18 +6,17 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:20:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 13:51:04 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/08 18:23:13 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROOM_H
 # define ROOM_H
 
-typedef struct		s_room
+typedef struct			s_room
 {
-	char			*name;
-	struct s_room	*links;
-	struct s_room	*next;
-}					t_room;
+	char				*name;
+	struct s_room_list	*links;
+}						t_room;
 
 #endif
