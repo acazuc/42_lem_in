@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:04:52 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/09 11:38:24 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/09 12:45:49 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(void)
 	env->end = NULL;
 	env->ants = -1;
 	parse(env);
-	if (!env->start || !env->end || env->start == INT_MAX)
+	if (!env->start || !env->end)
 	{
 		ft_putstr("Error\n");
 		exit(1);
@@ -33,6 +33,11 @@ int		main(void)
 	ft_putstr("End room: ");
 	ft_putendl(env->end ? env->end->name : "Empty");
 	place_pounds(env, env->end, 0);
+	if (env->start->pound == INT_MAX)
+	{
+		ft_putstr("Error\n");
+		exit(1);
+	}
 	ft_putstr("Ants: ");
 	ft_putnbr(env->ants);
 	ft_putendl("\nRooms: ");
@@ -57,4 +62,5 @@ int		main(void)
 		ft_putchar('\n');
 		lst = lst->next;
 	}
+	print_moves(env);
 }
