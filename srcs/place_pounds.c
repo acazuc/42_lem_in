@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   place_pounds.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/08 13:25:55 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/09 10:33:52 by acazuc           ###   ########.fr       */
+/*   Created: 2016/02/09 10:32:32 by acazuc            #+#    #+#             */
+/*   Updated: 2016/02/09 11:36:33 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#include "lem_in.h"
 
-# include <unistd.h>
-# include <limits.h>
+void	place_pounds(t_env *env, t_room *room, int pound)
+{
+	t_room_list	*lst;
 
-#endif
+	if (pound < room->pound)
+	{
+		room->pound = pound;
+		lst = room->links;
+		while (lst)
+		{
+			place_pounds(env, lst->room, pound + 1);
+			lst = lst->next;
+		}
+	}
+}

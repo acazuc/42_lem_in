@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   print_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/08 13:25:55 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/09 10:33:52 by acazuc           ###   ########.fr       */
+/*   Created: 2016/02/09 11:37:25 by acazuc            #+#    #+#             */
+/*   Updated: 2016/02/09 11:43:28 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#include "lem_in.h"
 
-# include <unistd.h>
-# include <limits.h>
+void	print_moves(t_env *env)
+{
+	t_room_list	*lst;
+	t_room		*current;
+	t_room		*best;
 
-#endif
+	while (env->ants > 0)
+	{
+		current = env->start;
+		while (current != env->end)
+		{
+			best = NULL;
+			lst = current->links;
+			while (lst)
+			{
+				lst = lst->next;
+			}
+		}
+		env->ants--;
+	}
+}

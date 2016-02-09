@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:04:52 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/09 10:29:30 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/09 11:38:24 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ int		main(void)
 	env->end = NULL;
 	env->ants = -1;
 	parse(env);
+	if (!env->start || !env->end || env->start == INT_MAX)
+	{
+		ft_putstr("Error\n");
+		exit(1);
+	}
+	ft_putstr("Start room: ");
+	ft_putendl(env->start ? env->start->name : "Empty");
+	ft_putstr("End room: ");
+	ft_putendl(env->end ? env->end->name : "Empty");
+	place_pounds(env, env->end, 0);
 	ft_putstr("Ants: ");
 	ft_putnbr(env->ants);
 	ft_putendl("\nRooms: ");
@@ -32,7 +42,9 @@ int		main(void)
 	{
 		ft_putchar('\'');
 		ft_putstr(lst->room->name);
-		ft_putstr("' linked with: ");
+		ft_putstr("' pounded ");
+		ft_putnbr(lst->room->pound);
+		ft_putstr(" linked with: ");
 		t_room_list *lst2;
 		lst2 = lst->room->links;
 		while (lst2)
@@ -45,8 +57,4 @@ int		main(void)
 		ft_putchar('\n');
 		lst = lst->next;
 	}
-	ft_putstr("Start room: ");
-	ft_putendl(env->start ? env->start->name : "Empty");
-	ft_putstr("End room: ");
-	ft_putendl(env->end ? env->end->name : "Empty");
 }
