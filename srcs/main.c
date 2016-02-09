@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:04:52 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 18:36:24 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/09 10:29:30 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ int		main(void)
 	env->rooms = NULL;
 	env->start = NULL;
 	env->end = NULL;
+	env->ants = -1;
 	parse(env);
-	ft_putendl("Rooms: ");
+	ft_putstr("Ants: ");
+	ft_putnbr(env->ants);
+	ft_putendl("\nRooms: ");
 	t_room_list *lst;
 	lst = env->rooms;
 	while (lst)

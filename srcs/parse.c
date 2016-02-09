@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:09:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 18:53:27 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/09 10:28:52 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,17 @@ void	parse(t_env *env)
 	while ((rd = get_next_line(0, &(p.line))) == 1)
 	{
 		if (p.line[0] != '#' || (p.line[1] && p.line[1] == '#'))
-			if (!parse_line(env, &p))
+		{
+			if (env->ants == -1)
+			{
+				if (ft_strisdigit(p.line))
+					env->ants = ft_atoi(p.line);
+				else
+					return ;
+			}
+			else if (!parse_line(env, &p))
 				return ;
+		}
 	}
 	if (rd == -1)
 		error_quit("Error while reading stdin");
