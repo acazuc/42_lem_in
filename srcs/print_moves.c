@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 11:37:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/09 12:47:16 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/10 10:58:35 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,10 @@ void	print_moves(t_env *env)
 		{
 			current = get_best(current);
 			ft_putchar('L');
-			ft_putnbr(env->ants);
+			ft_putnbr(env->max_ants + 1 - env->ants);
 			ft_putchar('-');
-			ft_putstr(current->name);
-			if (current != env->end)
-				ft_putchar(' ');
+			ft_putendl(current->name);
 		}
 		env->ants--;
-		ft_putchar('\n');
 	}
 }
