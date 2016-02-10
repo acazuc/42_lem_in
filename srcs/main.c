@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:04:52 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/09 12:45:49 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/10 11:37:44 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		main(void)
 		ft_putstr("Error\n");
 		exit(1);
 	}
+	env->total_ants = env->ants;
 	ft_putstr("Ants: ");
 	ft_putnbr(env->ants);
 	ft_putendl("\nRooms: ");
