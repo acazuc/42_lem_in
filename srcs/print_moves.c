@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 11:37:25 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/10 11:37:52 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/13 10:36:23 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_room	*get_best(t_room *room)
 	return (best);
 }
 
-void	print_moves(t_env *env)
+void			print_moves(t_env *env)
 {
 	t_room		*current;
 

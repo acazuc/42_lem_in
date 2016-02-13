@@ -6,11 +6,20 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:04:52 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/13 10:31:57 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/13 10:39:37 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+void	test_error(int i)
+{
+	if (i)
+	{
+		ft_putendl("Error");
+		exit(1);
+	}
+}
 
 int		main(void)
 {
@@ -27,17 +36,9 @@ int		main(void)
 	env->file[0] = NULL;
 	parse(env);
 	print_file(env);
-	if (!env->start || !env->end || env->ants <= 0)
-	{
-		ft_putstr("Error\n");
-		exit(1);
-	}
+	test_error(!env->start || !env->end || env->ants <= 0);
 	place_pounds(env, env->end, 0);
-	if (env->start->pound == INT_MAX)
-	{
-		ft_putstr("Error\n");
-		exit(1);
-	}
+	test_error(env->start->pound == INT_MAX);
 	ft_putchar('\n');
 	env->total_ants = env->ants;
 	print_moves(env);

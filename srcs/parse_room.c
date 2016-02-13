@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:50:08 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 18:26:46 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/13 10:36:12 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	check_start_end(t_env *env, t_room *room, t_parser *p)
 	return (1);
 }
 
-int		parse_room(t_env *env, t_parser *p, char **split)
+int			parse_room(t_env *env, t_parser *p, char **split)
 {
 	t_room_list	*lst;
 	t_room		*room;

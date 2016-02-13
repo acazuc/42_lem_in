@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:09:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/13 10:25:10 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/13 10:38:45 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,11 @@ static int		parse_line(t_env *env, t_parser *p)
 			return (0);
 		if (c_r == -1 && c_l == -1)
 			return (0);
-		
 	}
 	return (1);
 }
 
-void	parse(t_env *env)
+void			parse(t_env *env)
 {
 	t_parser	p;
 	int			rd;
