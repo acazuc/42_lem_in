@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:09:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/13 10:38:45 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/13 10:42:26 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void			parse(t_env *env)
 	p.is_end = 0;
 	while ((rd = get_next_line(0, &(p.line))) == 1)
 	{
-		add_file_line(env, p.line);
 		if (p.line[0] != '#' || (p.line[1] && p.line[1] == '#'))
 		{
 			if (env->ants == -1)
@@ -100,6 +99,7 @@ void			parse(t_env *env)
 			}
 			else if (!parse_line(env, &p))
 				return ;
+			add_file_line(env, p.line);
 		}
 	}
 	if (rd == -1)
