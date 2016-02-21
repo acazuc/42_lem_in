@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:09:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/13 10:42:26 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/21 14:51:10 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void			parse(t_env *env)
 			}
 			else if (!parse_line(env, &p))
 				return ;
-			add_file_line(env, p.line);
+			ft_putendl(p.line);
+			free(p.line);
 		}
 	}
 	if (rd == -1)

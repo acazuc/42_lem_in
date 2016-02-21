@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:04:52 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/13 10:39:37 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/21 14:50:40 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int		main(void)
 		error_quit("Failed to malloc env file lines");
 	env->file[0] = NULL;
 	parse(env);
-	print_file(env);
 	test_error(!env->start || !env->end || env->ants <= 0);
 	place_pounds(env, env->end, 0);
 	test_error(env->start->pound == INT_MAX);
