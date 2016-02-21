@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:09:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/21 14:51:10 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/21 15:22:24 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void			parse(t_env *env)
 
 	p.is_start = 0;
 	p.is_end = 0;
+	p.link_part = 0;
 	while ((rd = get_next_line(0, &(p.line))) == 1)
 	{
 		if (p.line[0] != '#' || (p.line[1] && p.line[1] == '#'))

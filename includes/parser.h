@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:28:07 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 13:36:55 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/21 15:21:21 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct	s_parser
 {
 	char		*line;
+	int			link_part;
 	int			is_start;
 	int			is_end;
 }				t_parser;

@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:50:08 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/13 10:36:12 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/21 15:21:49 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			parse_room(t_env *env, t_parser *p, char **split)
 	t_room_list	*lst;
 	t_room		*room;
 
-	if (!is_nbr(split[1]) || !is_nbr(split[2]))
+	if (!is_nbr(split[1]) || !is_nbr(split[2]) || p->link_part)
 		return (0);
 	lst = env->rooms;
 	while (lst)

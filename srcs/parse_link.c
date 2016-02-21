@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 15:07:57 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/08 18:24:34 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/21 15:22:49 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int				parse_link(t_env *env, t_parser *p, char **split)
 	t_room	*r1;
 	t_room	*r2;
 
+	p->link_part = 1;
 	if (p->is_start || p->is_end)
 		return (0);
 	if (!(r1 = get_room(env, split[0])))
