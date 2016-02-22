@@ -6,17 +6,18 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:04:52 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/21 15:05:17 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/22 09:37:09 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	test_error(int i)
+void	test_error(int i, char *error)
 {
 	if (i)
 	{
-		ft_putendl("Error");
+		ft_putstr("Error: ");
+		ft_putendl(error);
 		exit(1);
 	}
 }
@@ -35,10 +36,12 @@ int		main(void)
 		error_quit("Failed to malloc env file lines");
 	env->file[0] = NULL;
 	parse(env);
-	test_error(!env->start || !env->end || env->ants <= 0);
-	place_pounds(env, env->end, 0);
-	test_error(env->start->pound == INT_MAX);
 	ft_putchar('\n');
+	test_error(!env->start, "No start room");
+	test_error(!env->end, "No end room");
+	test_error(env->ants <= 0, "Invalid ants number");
+	place_pounds(env, env->end, 0);
+	test_error(env->start->pound == INT_MAX, "No path available");
 	env->total_ants = env->ants;
 	print_moves(env);
 }

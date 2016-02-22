@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prototypes.h                                       :+:      :+:    :+:   */
+/*   valid_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/08 13:16:08 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/22 09:36:31 by acazuc           ###   ########.fr       */
+/*   Created: 2016/02/22 09:30:34 by acazuc            #+#    #+#             */
+/*   Updated: 2016/02/22 09:40:10 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROTOTYPES_H
-# define PROTOTYPES_H
+#include "lem_in.h"
 
-# include "env.h"
-# include "parser.h"
-
-void	error_quit(char *str);
-void	parse(t_env *env);
-int		parse_room(t_env *env, t_parser *p, char **split);
-int		parse_link(t_env *env, t_parser *p, char **split);
-void	place_pounds(t_env *env, t_room *room, int pound);
-void	print_moves(t_env *env);
-t_room	*room_create(void);
-int		valid_int(char *line);
-
-#endif
+int		valid_int(char *line)
+{
+	while (*line == '0')
+		line++;
+	if (!ft_strisdigit(line))
+		return (0);
+	if (line[0] == '-')
+		return (0);
+	else if (ft_strlen(line) > 10)
+		return (0);
+	if (ft_atol(line) > INT_MAX)
+		return (0);
+	return (1);
+}
