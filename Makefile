@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/02/22 09:45:38 by acazuc           ###   ########.fr        #
+#    Updated: 2016/02/22 13:07:15 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ SRCS_NAME = main.c \
 			place_pounds.c \
 			print_moves.c \
 			valid_int.c \
+			add_file_line.c \
+			print_file.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

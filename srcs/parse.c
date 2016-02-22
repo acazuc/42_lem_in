@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:09:03 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/22 09:35:51 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/22 13:07:34 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,7 @@ void			parse(t_env *env)
 			else if (!parse_line(env, &p))
 				return ;
 		}
-		ft_putendl(p.line);
-		free(p.line);
+		add_file_line(env, p.line);
 	}
 	if (rd == -1)
 		error_quit("Error while reading stdin");

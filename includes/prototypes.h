@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:16:08 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/22 09:36:31 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/22 13:07:02 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ void	place_pounds(t_env *env, t_room *room, int pound);
 void	print_moves(t_env *env);
 t_room	*room_create(void);
 int		valid_int(char *line);
+void	add_file_line(t_env *env, char *line);
+void	print_file(t_env *env);
 
 #endif

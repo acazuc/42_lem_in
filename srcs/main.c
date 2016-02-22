@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 13:04:52 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/22 09:37:09 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/22 13:10:00 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ int		main(void)
 
 	if (!(env = malloc(sizeof(*env))))
 		error_quit("Failed to malloc env");
+	if (!(env->file = malloc(sizeof(*env->file))))
+		error_quit("Failed to malloc env file cache");
+	env->file[0] = NULL;
 	env->rooms = NULL;
 	env->start = NULL;
 	env->end = NULL;
 	env->ants = -1;
-	if (!(env->file = malloc(sizeof(*env->file))))
-		error_quit("Failed to malloc env file lines");
-	env->file[0] = NULL;
 	parse(env);
+	print_file(env);
 	ft_putchar('\n');
 	test_error(!env->start, "No start room");
 	test_error(!env->end, "No end room");
