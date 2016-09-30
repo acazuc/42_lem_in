@@ -1,4 +1,4 @@
-libft/*
-objs/*.o
+libft
+obj
 *.swp
 lem-in
